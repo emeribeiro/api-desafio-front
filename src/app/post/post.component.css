@@ -1,0 +1,59 @@
+img:hover {
+    cursor: pointer;
+}
+
+.resumo-post {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.w-70 {
+    width: 70% !important;
+}
+
+#lixeira {
+    width: 20px;
+}
+
+.btn-primary {
+    background-color: rgb(255, 95, 17);
+    border-color: rgb(255, 95, 17);
+    min-width: 90px;
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 95, 17);
+    opacity: 0.90;
+    border-color: rgb(255, 95, 17);
+}
+
+#label-arquivos {
+    margin-left: -15px;
+ }
+ 
+ #label-arquivos:hover {
+    cursor: pointer;
+ }
+ #arquivos {
+    background-color: rgb(255, 95, 17);
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ }
+
+ textarea {
+    resize: none;
+}
+hr {
+    margin-top: 0rem; 
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid rgba(0,0,0,.1);
+}
+
+.comentario {
+    border: 1px solid rgb(255, 95, 17);
+}

@@ -1,0 +1,136 @@
+<div *ngIf="listar">
+    <div class="row col-12 mt-3">
+        <h2>Posts</h2>
+    </div>
+    <div class="row col-12 mt-3">        
+        <div class="col-12">
+            <input type="text" class="form-control" name="filtro" 
+                [(ngModel)]="filtro" maxlength="20"
+                placeholder="Pesquisar Posts"/>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary mt-2 ml-2 float-right" (click)="criarPost()">Criar Post</button> 
+            <button class="btn btn-primary mt-2 float-right" (click)="pesquisarPosts()">Pesquisar</button> 
+        </div>
+    </div>
+    
+    <div class="row col-12 mt-3">    
+        <div class="col-4 mt-1 mb-2" *ngFor="let post of posts">
+            <div class="form-group w-100">
+                <label for="post-id" class="w-100 font-weight-bold">{{post.titulo}}</label>
+                <div class="text-center">
+                    <img src="{{post.imagem}}" class="w-70"/>
+                </div>
+                <label class="w-100 text-justify resumo-post">{{post.texto}}</label>
+                <div class="text-center">
+                    <a href="javascript:void(0)" (click)="carregaPost(post.id)">Continuar lendo</a>
+                    <img src="assets/image/lixeira.png" alt="Excluir Post" id="lixeira" 
+                        class="float-right" *ngIf="username == post.usuario" (click)="excluirPost(post.id)"/>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!posts?.length > 0">
+            <p class="font-weight-bold">Não existem posts cadastrados.</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="novo">
+    <div class="row col-12 mt-3">    
+        <h2>Novo Post</h2>
+        <div class="form-group w-100">
+            <label for="titulo">Titulo</label>
+            <input type="text" class="form-control" name="titulo" required 
+                [(ngModel)]="form.titulo" #tituto="ngModel" maxlength="30"/>
+        </div>  
+        <div class="form-group w-100">
+            <label for="texto">Texto</label>
+            <textarea class="form-control" rows="5" name="texto" required [(ngModel)]="form.texto" #texto="ngModel">
+            </textarea>
+        </div>        
+        <div class="form-group w-100">
+            <label for="link">Link</label>
+            <input type="text" class="form-control" name="link" required 
+                [(ngModel)]="form.link" #link="ngModel" maxlength="100"/>
+        </div>        
+        <div class="control-group col-4">
+            <label for="files" id="label-files" class="btn btn-primary">Selecione uma imagem</label>
+            <input type="file" id="files" name="files" accept="image/x-png,image/gif,image/jpeg" 
+              (change)="inputFileChange($event)">
+        </div>        
+    </div>    
+    <div class="row col-12 mt-3">
+      <div class="card">       
+        <ul
+          class="list-group list-group-flush"
+          *ngFor="let file of arquivoCarregado"
+        >
+          <li class="list-group-item">
+            <a>{{ file.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row float-right">
+        <button class="btn btn-primary mt-5 ml-2" (click)="salvarPost()">Salvar</button>   
+        <a class="btn btn-primary mt-5 ml-2" routerLink="/home">Voltar</a>   
+    </div>   
+    <div class="p-2 mb-2 bg-danger text-white w-100"  *ngIf="error">
+        {{mensagem}}        
+    </div>
+    <div class="p-2 mb-2 bg-success text-white w-100"  *ngIf="sucesso">
+        {{mensagem}}        
+    </div>    
+</div>
+<div *ngIf="detalhe">
+    <div class="row col-12 mt-3">    
+        <h4>{{postSelecionado.titulo}}</h4>
+    </div>
+    <div class="row float-right">        
+        <a class="btn btn-primary mt-2 ml-2" routerLink="/home">Voltar</a>   
+    </div>  
+    <div class="row col-12">
+        <div class="text-center w-70">
+            <img src="{{postSelecionado.imagem}}" class="w-70"/>
+        </div>
+    </div>
+    <div class="row col-12 mt-1">
+        <p class="w-100 text-justify">
+            {{postSelecionado.texto}}
+        </p>
+    </div>
+    <div class="row col-12 mt-1">
+        <label class="font-weight-bold mr-1">
+            Autor: 
+        </label>
+        <p>{{postSelecionado.usuario}}</p>
+    </div>
+    <hr noshade/>
+    <label class="font-weight-bold mr-1">Comentários: </label>
+    <div class="row col-12 mt-1 pt-3 comentario" *ngFor="let comentario of postSelecionado.comentarios">
+        <div class="col-9">
+            <p >{{comentario.texto}}</p>
+        </div>
+        <div class="col-3">
+            <img src="assets/image/lixeira.png" alt="Excluir Comentário" id="lixeira" 
+                class="float-right" *ngIf="username == comentario.usuario" (click)="excluirComentario(comentario.id)"/>
+        </div>
+    </div>
+
+    <div class="row col-9 mt-1 mb-2">
+        <textarea class="form-control" rows="2" name="texto" maxlength="250"
+            [(ngModel)]="form.comentario" #comentario="ngModel">
+        </textarea>
+        <div class="row col-12 mt-1 float-right">
+            <button class="btn btn-primary" (click)="salvarComentario()">Comentar</button>                        
+            <a class="btn btn-primary ml-2" routerLink="/home">Voltar</a>   
+            
+        </div>
+    </div>
+    <div class="p-2 mb-2 bg-danger text-white w-100"  *ngIf="error">
+        {{mensagem}}        
+    </div>
+    <div class="p-2 mb-2 bg-success text-white w-100"  *ngIf="sucesso">
+        {{mensagem}}        
+    </div>    
+</div>
+    

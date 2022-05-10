@@ -1,0 +1,16 @@
+<div class="wrapper ">
+    <div id="formContent">
+    
+
+    <form method="post" action="login">
+        <input type="text" id="username" name="username" [(ngModel)]="username" placeholder="login" maxlength="30" required>
+        <input type="password" id="senha" name="senha" [(ngModel)]="senha" placeholder="senha" maxlength="20" required>
+        <input type="submit" name="login" value="Entrar" (click)="doLogin()">
+    </form>
+
+    <div id="formFooter" *ngIf="error"> 
+        <p class="dados-incorretos mt-0">{{mensagem}}</p>
+    </div>
+    
+    </div>
+</div>

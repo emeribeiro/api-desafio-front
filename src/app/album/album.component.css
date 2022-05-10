@@ -1,0 +1,36 @@
+label {
+    margin-bottom: .0rem !important;
+}
+.btn-primary {
+    background-color: rgb(255, 95, 17);
+    border-color: rgb(255, 95, 17);
+    min-width: 90px;
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 95, 17);
+    opacity: 0.90;
+    border-color: rgb(255, 95, 17);
+}
+
+#preview img{
+    margin: 5px;
+ }
+
+ #label-arquivos {
+    margin-left: -15px;
+ }
+ 
+ #label-arquivos:hover {
+    cursor: pointer;
+ }
+ #arquivos {
+    background-color: rgb(255, 95, 17);
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ }
+
+ .w-60 {
+     width: 65% !important;
+ }

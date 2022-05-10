@@ -1,0 +1,63 @@
+
+<div *ngIf="listar">
+    <div class="row col-12 mt-3" >
+        <h2>Usuários</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Username</th>  
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of usuarios">
+              <td>{{user.nome}}</td>        
+              <td>{{user.username}}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-group row col-12">
+          <button class="btn btn-primary mt-5 ml-2" (click)="newUser()">Novo</button>   
+          <a class="btn btn-primary mt-5 ml-2" routerLink="/home">Voltar</a>   
+      </div>      
+</div>
+<div *ngIf="novo">  
+    <div class="row col-12 mt-3">    
+      <h2>Novo Usuário</h2>
+        <div class="form-group w-100">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" name="nome" required 
+              [(ngModel)]="form.nome" #nome="ngModel" maxlength="50"/>
+        </div>        
+        <div class="form-group w-100">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" required 
+              [(ngModel)]="form.username" #username="ngModel" maxlength="15"/>
+        </div>        
+        <div class="form-group w-100">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" name="senha" required 
+              minlength="6" [(ngModel)]="form.senha" #senha="ngModel" minlength="5" maxlength="15"/>          
+        </div>
+        
+        <div class="form-group">
+            <button class="btn btn-primary mt-5" (click)="addUser()">Registrar</button>     
+            <a class="btn btn-primary mt-5 ml-2" routerLink="/home">Voltar</a>             
+        </div>
+    
+        <div class="p-2 mb-2 bg-danger text-white w-100"  *ngIf="error">
+            Houve um erro no cadastro do usuário. Por favor, tente novamente.
+        </div>
+        <div class="p-2 mb-2 bg-danger text-white w-100"  *ngIf="mensagem">
+          {{mensagem}}
+      </div>
+        <div class="p-2 mb-2 bg-success text-white w-100"  *ngIf="sucesso">
+            Usuário cadastrado com sucesso.
+        </div>
+        
+    </div>    
+</div>
+
