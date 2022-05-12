@@ -38,8 +38,8 @@ body {
 
 input[type=button], input[type=submit], input[type=reset] {
 
-  background-color: rgb(255, 95, 17);
-  box-shadow: rgb(255, 95, 17) 0px 10px 28px -12px;
+  background-color: rgb(147, 112, 219);
+  box-shadow: rgb(147, 112, 219) 0px 10px 28px -12px;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -75,7 +75,7 @@ input[type=text], input[type=password]  {
 }
 
 input[type=text]:focus, input[type=password]:focus  {  
-  border-bottom: 2px solid rgb(255, 95, 17);
+  border-bottom: 2px solid rgb(147, 112, 219);
   border: none;
 }
 
