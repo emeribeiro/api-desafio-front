@@ -41,9 +41,9 @@ export class PostComponent implements OnInit {
     this.carregaPosts();
   }
 
-/*  pesquisarPosts() {
+  pesquisaPostPorTextoOuLink() {
     this.posts = [];
-    let response = this.service.getPostsPesquisa(this.filtro);
+    let response = this.service.getPostPorTextoOuLink(this.filtro);
     response.subscribe(data => {      
       data.forEach(post => {    
         var url = 'data:image/jpeg;base64,' + post.imagem;           
@@ -51,7 +51,7 @@ export class PostComponent implements OnInit {
           post.titulo, 
           post.link, 
           post.texto,
-          post.dono,
+          post.usuario,
           url,
           null));
       });
@@ -61,7 +61,7 @@ export class PostComponent implements OnInit {
         this.router.navigate(["/login"]);
       }    
     });
-  }*/
+  }
 
   criarPost() {
     this.listar = false;
