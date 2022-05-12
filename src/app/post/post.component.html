@@ -24,7 +24,7 @@
                 <label class="w-100 text-justify resumo-post">{{post.texto}}</label>
                 <div class="text-center">
                     <a href="javascript:void(0)" (click)="carregaPost(post.id)">Continuar lendo</a>
-                    <img src="assets/image/lixeira.png" alt="Excluir Post" id="lixeira" 
+                    <img src="../../assets/image/lixeira.png" alt="Excluir Post" id="lixeira" 
                         class="float-right" *ngIf="username == post.usuario" (click)="excluirPost(post.id)"/>
                 </div>
             </div>

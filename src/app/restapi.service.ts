@@ -48,8 +48,8 @@ export class RestapiService {
     return this.http.post<any>(this.usuarioUrl, user, httpOptions);
   }
 
-  public addAlbum(form:any, formData: FormData) {
-    formData.append("titulo", form.titulo);   
+  public addAlbum(titulo:any, formData: FormData) {
+    formData.append("titulo", titulo);   
     return this.http.post<any>(this.albumUrl, formData);
   }
 

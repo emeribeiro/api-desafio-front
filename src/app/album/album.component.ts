@@ -25,7 +25,7 @@ export class AlbumComponent implements OnInit {
   arquivosCarregados:FileList;
 
   files: FormData;
-  form: any = {};
+  tituloAlbum: string;
   
   albums=[];
   fotos=[];
@@ -55,12 +55,12 @@ export class AlbumComponent implements OnInit {
 
   salvarNovoAlbum() {    
     let response = this.service.addAlbum(
-      this.form,
+      this.tituloAlbum,
       this.files);
     response.subscribe(response => {
       this.sucesso = true;
       this.error = false;
-      this.form = {};
+      this.tituloAlbum = '';
       this.arquivosCarregados = null;
       this.carregaAlbums();
     },
@@ -83,7 +83,7 @@ export class AlbumComponent implements OnInit {
       
       Array.prototype.forEach.call(event.target.files, function(file) { 
         const foto = file;  
-        files.append('arquivos', foto);
+        files.append('files', foto);
       });
             
       this.files = files; 
@@ -100,10 +100,10 @@ export class AlbumComponent implements OnInit {
     let response = this.service.getAlbum(id);
     response.subscribe(response => {
      /* this.nomeAlbum = response.nome;*/
-     this.form.titulo = response.titulo;
+      this.tituloAlbum = response.titulo;
 
-      response.fotos.forEach(foto => {
-        var url = 'data:image/jpeg;base64,' + foto.arquivo;
+      response.imagens.forEach(foto => {
+        var url = 'data:image/jpeg;base64,' + foto.imagem;
         this.fotos.push(url);
       });
       

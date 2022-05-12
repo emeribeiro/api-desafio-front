@@ -35,7 +35,7 @@
         <h2>Novo Álbum</h2>
         <div class="form-group w-100">
             <label for="nome">Título</label>
-            <input type="text" class="form-control" name="nome" required [(ngModel)]="form.titulo"/>
+            <input type="text" class="form-control" name="nome" required [(ngModel)]="tituloAlbum"/>
         </div>       
         <div class="control-group col-4">
             <label for="files" id="label-files" class="btn btn-primary">Selecione as imagens</label>
@@ -68,7 +68,7 @@
 </div>
 <div *ngIf="detalhe">
   <div class="row col-12 mt-3">
-    <h2>Álbum {{ form.titulo }}</h2>
+    <h2>Álbum {{ tituloAlbum }}</h2>
   </div>
   <div class="row col-12 mt-3">
     <div class="col-3 ml-1" *ngFor="let foto of fotos">
