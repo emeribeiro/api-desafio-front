@@ -32,7 +32,7 @@ export class RestapiService {
   private baseUrl = 'http://localhost:8080/';
   private loginUrl = this.baseUrl + 'auth/login';  
   private usuarioUrl = this.baseUrl + 'auth/registrar';
-  private usuariosUrl = this.baseUrl + 'listaDeUsuarios';
+  private usuariosUrl = this.baseUrl + 'usuario/listaDeUsuarios';
   private postUrl = this.baseUrl + 'post';
   private albumUrl = this.baseUrl + 'album';
   private comentarioURL = this.baseUrl + 'comentario';
@@ -77,9 +77,9 @@ export class RestapiService {
     return this.http.get<Post[]>(this.postUrl +"/listaDePosts");
   }
 
-/*  public getPostsPesquisa(filtro:string): Observable<Post[]> {      
-    return this.http.get<Post[]>(this.postUrl + "sPesquisa?filtro=" + filtro);
-  }*/
+  public getPostPorTextoOuLink(filtro:string): Observable<Post[]> {      
+    return this.http.get<Post[]>(this.postUrl + "/pesquisaPorTextoOuLink?filtro=" + filtro);
+  }
 
   public getAlbum(id:string) {
     return this.http.get<any>(this.albumUrl + "/" + id);
