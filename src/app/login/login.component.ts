@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     let response = this.service.login(this.username, this.senha);
     response.subscribe(data => {
       this.tokenStorage.saveToken(data.token);
-        this.tokenStorage.saveUsername(data.username);
+      this.tokenStorage.saveUsername(data.username);
       this.router.navigate(["/home"]);
       this.error = false;
     },

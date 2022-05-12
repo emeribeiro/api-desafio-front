@@ -13,8 +13,10 @@
             <tr *ngFor="let album of albums">
               <td>{{album.titulo}}</td>        
               <td>{{album.usuario}}</td>
-              <td><button class="btn btn-primary" (click)="abrirAlbum(album.id)">Abrir</button>
-              <button class="btn btn-primary ml-2" (click)="excluirAlbum(album.id)" *ngIf="username == album.usuario">Excluir</button></td>
+              <td>
+                <button class="btn btn-primary" (click)="abrirAlbum(album.id)">Abrir</button>
+                <button class="btn btn-primary ml-2" (click)="excluirAlbum(album.id)" *ngIf="username == album.usuario">Excluir</button>
+              </td>
             </tr>
           </tbody>
         </table>
